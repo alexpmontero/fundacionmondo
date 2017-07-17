@@ -1,0 +1,60 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/normalize.min.css">        
+        <link rel="stylesheet" href="css/theme7.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>        
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <div class="container">           
+        </div>
+        
+        <script src="https://addevent.com/libs/atc/1.6.1/atc.min.js"></script>
+        <script id="tasks_template" type="text/template">
+            
+        {% for eventsInMonth in eventsByMonth %}
+        <h4>{{ loop.key | date('F Y') }}</h4>
+        <ul>
+            {% for monthEvent in eventsInMonth %}        
+            <li>
+                <h5>{{ monthEvent.task.title | capitalize }}</h5>
+                <p>{{ monthEvent.reminder.date | locale }}</p>
+                <p>{{ monthEvent.note.content }}</p> 
+                <div title="Agregar a Calendario" class="addeventatc">
+                    Agregar a Calendario
+                    <span class="start">{{ monthEvent.reminder.date | date('m/d/Y') }} 11:00 AM</span>
+                    <span class="end">{{ monthEvent.reminder.date | date('m/d/Y') }} 02:00 PM</span>
+                    <span class="timezone">America/Mexico_City</span>
+                    <span class="title">{{ monthEvent.task.title | capitalize }}</span>
+                    <span class="description">{{ monthEvent.note.content | capitalize }}</span>
+                    <span class="date_format">MM/DD/YYYY</span>
+                </div>
+               
+            </li>
+            {% endfor %}
+        </ul>
+        {% endfor %}
+        </script>
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<!--         // <script src="js/vendor/underscore-min.js"></script>
+        // <script src="js/vendor/swig.min.js"></script>
+        // <script src="js/vendor/q.js"></script> -->
+<!--         // <script src="js/vendor/moment-with-locales.js"></script>
+        // <script src="js/wunderlist/wunderlist.sdk.js"></script>    -->     
+        <!-- // <script src="js/agenda.js"></script>         -->
+    </body>
+</html>
